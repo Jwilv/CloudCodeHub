@@ -1,0 +1,6 @@
+.console{
+  width: 100vw;
+  height: 20vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
