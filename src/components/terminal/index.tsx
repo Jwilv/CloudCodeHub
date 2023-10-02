@@ -8,7 +8,12 @@ function TerminalComponent() {
   const terminalInstance = useRef<Terminal | null>(null);
 
   useEffect(() => {
-    const terminal = new Terminal();
+    const terminal = new Terminal( {
+      theme: {
+        background: '#1e1e1e',
+        foreground: '#ffffff',
+      },
+    });
     terminal.loadAddon(new WebLinksAddon());
 
     // Conecta la terminal al elemento DOM si el ref existe
@@ -16,33 +21,7 @@ function TerminalComponent() {
       terminal.open(terminalRef.current);
 
       // Ejemplo de escritura en la terminal
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
-      terminal.writeln('Bienvenido a la consola web de editApp');
+      terminal.writeln('0');
       terminal.writeln('1');
 
 
@@ -66,7 +45,7 @@ function TerminalComponent() {
     };
   }, []);
 
-  return <div ref={terminalRef} style={{ width: '100%', height: '20vh' }} />;
+  return <div ref={terminalRef} style={{ width: '100%', height: '20vh'}} />;
 }
 
 export default TerminalComponent;

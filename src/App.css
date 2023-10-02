@@ -1,6 +1,15 @@
-.console{
+.console {
   width: 100vw;
   height: 20vh;
   overflow-y: scroll;
   overflow-x: hidden;
+
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.editor{
+  border-bottom: 1px solid white;
 }
