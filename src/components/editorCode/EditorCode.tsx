@@ -16,9 +16,22 @@ export const EditorCode = () => {
     setValueEditor(editorRef.current?.getValue())
   }
 
+  const handleSave = () => {
+    fetch('http://localhost:3000/codejs/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        codigo: valueEditor
+      })
+    })
+  }
+
 
   return (
-    <Editor
+<>
+<Editor
       height="80vh"
       width="100vw"
       theme="vs-dark"
@@ -28,5 +41,9 @@ export const EditorCode = () => {
       onMount={handleEditorDidMount}
       onChange={handleChangeEditor}
     />
+    <button onClick={ handleSave }>
+      save
+    </button>
+</>
   )
 }
