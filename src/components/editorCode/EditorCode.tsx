@@ -1,8 +1,11 @@
 import { Editor } from '@monaco-editor/react';
 import { useRef, useState } from "react";
+import Terminal from '../terminal';
 
 
 export const EditorCode = () => {
+
+  const [logs, setLogs] = useState([])
 
   const editorRef = useRef<any>(null);
 
@@ -16,34 +19,40 @@ export const EditorCode = () => {
     setValueEditor(editorRef.current?.getValue())
   }
 
-  const handleSave = () => {
-    fetch('http://localhost:3000/codejs/', {
+  const handleSave = async () => {
+    const response = await fetch('http://localhost:3000/api/codejs/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        codigo: valueEditor
+        code: valueEditor
       })
     })
+
+    const data = await response.json()
+    setLogs(data.logs)
   }
 
 
   return (
-<>
-<Editor
-      height="80vh"
-      width="100vw"
-      theme="vs-dark"
-      defaultLanguage="javascript"
-      className='editor'
-      value={valueEditor}
-      onMount={handleEditorDidMount}
-      onChange={handleChangeEditor}
-    />
-    <button onClick={ handleSave }>
-      save
-    </button>
-</>
+    <>
+      <button onClick={handleSave}>
+        Run
+      </button>
+      <Editor
+        height="80vh"
+        width="100vw"
+        theme="vs-dark"
+        defaultLanguage="javascript"
+        className='editor'
+        value={valueEditor}
+        onMount={handleEditorDidMount}
+        onChange={handleChangeEditor}
+      />
+      <div className='console'>
+        <Terminal logs={logs}/>
+      </div>
+    </>
   )
 }

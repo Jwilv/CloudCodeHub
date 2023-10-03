@@ -3,7 +3,11 @@ import { Terminal } from 'xterm';
 import { WebLinksAddon } from 'xterm-addon-web-links';
 import 'xterm/css/xterm.css';
 
-function TerminalComponent() {
+interface Props {
+  logs: string[];
+}
+
+function TerminalComponent( {logs} : Props ) {
   const terminalRef = useRef(null);
   const terminalInstance = useRef<Terminal | null>(null);
 
@@ -23,6 +27,10 @@ function TerminalComponent() {
       // Ejemplo de escritura en la terminal
       terminal.writeln('0');
       terminal.writeln('1');
+
+      logs.map((log) => {
+        terminal.writeln(log);
+      });
 
 
       // Maneja eventos de entrada del usuario y envía comandos al servidor si es necesario

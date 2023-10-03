@@ -7,10 +7,6 @@ function App() {
   return (
     <>
       <EditorCode />
-
-      <div className='console'>
-        <Terminal />
-      </div>
     </>
   )
 }
