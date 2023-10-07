@@ -6,10 +6,10 @@ interface Props {
 
 export const LogsList = ({logs} : Props) => {
   return (
-    <>
+    <div>
     {
         logs.map( ( log, index)=>( <Log key={index} log={log} />  ))
     }
-    </>
+    </div>
   )
 }

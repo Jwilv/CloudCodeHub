@@ -1,7 +1,8 @@
 .console {
   width: 99vw;
-  height: 20vh;
-  overflow: hidden;
+  height: 18vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   background-color: #1e1e1e;
 
@@ -15,6 +16,8 @@
   color: #fff;
   margin-left: 10px;
   font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .editor{

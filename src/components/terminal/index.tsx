@@ -8,7 +8,7 @@ interface Props {
 function Terminal({ logs }: Props) {
 
   return (
-    <div className='console'>
+    <div className="console">
       <LogsList logs={logs} />
     </div>
   )
