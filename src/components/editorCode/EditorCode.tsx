@@ -31,7 +31,7 @@ export const EditorCode = () => {
     })
 
     const data = await response.json()
-    setLogs(data.logs)
+    setLogs(data.result)
   }
 
 
@@ -42,7 +42,7 @@ export const EditorCode = () => {
       </button>
       <Editor
         height="80vh"
-        width="100vw"
+        width="99vw"
         theme="vs-dark"
         defaultLanguage="javascript"
         className='editor'
@@ -50,9 +50,8 @@ export const EditorCode = () => {
         onMount={handleEditorDidMount}
         onChange={handleChangeEditor}
       />
-      <div className='console'>
+
         <Terminal logs={logs}/>
-      </div>
     </>
   )
 }
