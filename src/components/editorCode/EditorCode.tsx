@@ -1,6 +1,7 @@
 import { Editor } from '@monaco-editor/react';
 import { useRef, useState } from "react";
 import Terminal from '../terminal';
+import { SideBar } from '../ui/sideBar/SideBar';
 
 
 export const EditorCode = () => {
@@ -9,7 +10,7 @@ export const EditorCode = () => {
 
   const editorRef = useRef<any>(null);
 
-  const [valueEditor, setValueEditor] = useState('');
+  const [valueEditor, setValueEditor] = useState('console.log(10)');
 
   const handleEditorDidMount = (editor: any) => {
     editorRef.current = editor
@@ -36,22 +37,24 @@ export const EditorCode = () => {
 
 
   return (
-    <>
-      <button onClick={handleSave}>
-        Run
-      </button>
-      <Editor
-        height="80vh"
-        width="99vw"
-        theme="vs-dark"
-        defaultLanguage="javascript"
-        className='editor'
-        value={valueEditor}
-        onMount={handleEditorDidMount}
-        onChange={handleChangeEditor}
-      />
+    <div className='layout'>
 
-        <Terminal logs={logs}/>
-    </>
+
+      <SideBar />
+      <div className='editor-container'>
+        <Editor
+          height="82vh"
+          width="100%"
+          theme="vs-dark"
+          defaultLanguage="javascript"
+          className='editor'
+          value={valueEditor}
+          onMount={handleEditorDidMount}
+          onChange={handleChangeEditor}
+        />
+
+        <Terminal logs={logs} />
+      </div>
+    </div>
   )
 }

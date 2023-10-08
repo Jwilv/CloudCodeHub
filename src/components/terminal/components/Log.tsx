@@ -5,6 +5,6 @@ interface Props {
 
 export const Log = ( { log } : Props) => {
   return (
-    <p className="log">webApp/ {log}</p>
+    <p className="log">webApp: {log}</p>
   )
 }
