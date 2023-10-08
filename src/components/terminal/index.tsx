@@ -1,12 +1,10 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
 import { LogsList } from "./components/LogsList";
+import { LogsContext } from "../../context/LogsProvider";
 
-interface Props {
-  logs: string[];
-}
+function Terminal() {
 
-function Terminal({ logs }: Props) {
-
+  const { logs } = useContext(LogsContext);
   return (
     <div className="console">
       <LogsList logs={logs} />

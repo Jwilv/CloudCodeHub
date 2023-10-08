@@ -1,12 +1,14 @@
 
 interface Props {
-    children: JSX.Element
+    children: JSX.Element,
+    onClick?: () => void
 }
 
-export const Item = ({ children }: Props) => {
+export const Item = ({ children, onClick }: Props) => {
     return (
         <button
             className='button-t'
+            onClick={onClick}
         >
             {children}
         </button>
