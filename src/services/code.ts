@@ -1,6 +1,7 @@
+import { Code, Result } from '../interface/results';
 
 
-const postCode = async( valueEditor:string )=>{
+export const postCode = async( valueEditor:string ) : Promise<Result[]>=>{
     const response = await fetch('http://localhost:3000/api/codejs/', {
       method: 'POST',
       headers: {
@@ -11,7 +12,7 @@ const postCode = async( valueEditor:string )=>{
       })
     })
 
-    const { result } = await response.json()
+    const { result : resulst } : Code = await response.json()
 
-    return result
+    return resulst
 }

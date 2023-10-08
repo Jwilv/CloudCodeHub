@@ -2,11 +2,12 @@ import { Editor } from '@monaco-editor/react';
 import { useRef, useState } from "react";
 import Terminal from '../terminal';
 import { SideBar } from '../ui/sideBar/SideBar';
+import { useCode } from '../../hooks/useCode';
 
 
 export const EditorCode = () => {
 
-  const [logs, setLogs] = useState([])
+  const { handleRunCode, logs } = useCode();
 
   const editorRef = useRef<any>(null);
 
@@ -20,25 +21,14 @@ export const EditorCode = () => {
     setValueEditor(editorRef.current?.getValue())
   }
 
-  const handleSave = async () => {
-    const response = await fetch('http://localhost:3000/api/codejs/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        code: valueEditor
-      })
-    })
-
-    const data = await response.json()
-    setLogs(data.result)
-  }
-
 
   return (
     <div className='layout'>
 
+      <button
+        onClick={() => handleRunCode(valueEditor)}>
+        run
+      </button>
 
       <SideBar />
       <div className='editor-container'>
