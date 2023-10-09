@@ -20,6 +20,20 @@ export const SideBar = () => {
             <Item >
                 <i className="fa-solid fa-floppy-disk white" />
             </Item>
+            
+            <Item >
+                <i className="fa-solid fa-file-arrow-down white" />
+            </Item>
+
+            <Item >
+                <i className="fa-solid fa-plus white" />
+            </Item>
+
+            <Item >
+                <i className="fa-brands fa-js white"></i>
+            </Item>
+
+
         </div>
     )
 }
